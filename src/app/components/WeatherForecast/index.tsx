@@ -1,17 +1,10 @@
 import React from "react";
 import WeatherForecastItem from "../WeatherForecastItem";
 
-interface WeatherData {
-  day: string;
-  icon: string;
-  temp: {
-    night: number;
-    day: number;
-  };
-}
+import { WeatherDay } from "../../types/WeatherData";
 
 interface WeatherForecastProps {
-  dailyForecast: WeatherData[];
+  dailyForecast: WeatherDay[];
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }

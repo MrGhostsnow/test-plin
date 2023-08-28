@@ -1,15 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import translateDay from "../../../utils/TranslateDays";
-
-interface WeatherDay {
-  day: string;
-  icon: string;
-  temp: {
-    night: number;
-    day: number;
-  };
-}
+import { WeatherDay } from "../../types/WeatherData";
 
 interface WeatherForecastItemProps {
   day: WeatherDay;
