@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import WeatherDisplay from "../WeatherDisplay";
 import WeatherForecast from "../WeatherForecast";
+import WeatherInfos from "../WeatherInfos";
 
 const API_KEY: string = "2915e8300d57a6f21a0ce2633e4f7011";
 
@@ -17,6 +18,7 @@ interface DailyForecast {
 const WeatherApp: React.FC = () => {
   const [dailyForecast, setDailyForecast] = useState<DailyForecast[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [showWeatherInfos, setShowWeatherInfos] = useState<boolean>(false);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((success) => {
@@ -47,13 +49,28 @@ const WeatherApp: React.FC = () => {
     });
   }, []);
 
+  const handleMouseEnter = () => {
+    setShowWeatherInfos(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowWeatherInfos(false);
+  };
+
   return (
     <div>
       {loading && <h1 className="text-black">Carregando...</h1>}
       <div className="flex justify-center mb-6">
         <WeatherDisplay />
       </div>
-      <WeatherForecast dailyForecast={dailyForecast} />
+
+      <WeatherForecast
+        dailyForecast={dailyForecast}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      />
+
+      {showWeatherInfos && <WeatherInfos />}
     </div>
   );
 };
