@@ -13,7 +13,7 @@ interface CepInfoCardProps {
 
 const CepInfoCard: React.FC<CepInfoCardProps> = ({ infosCep }) => {
   return (
-    <div className="mt-4 p-4 md:w-1/4 border rounded shadow flex flex-col justify-center">
+    <div className="mt-4 p-4 md:w-1/4 border rounded shadow flex flex-col justify-center bg-white">
       <div className="mb-2">
         <h2 className="text-lg font-bold text-orange-500">Estado:</h2>
         <p className="text-black">{infosCep?.state}</p>
